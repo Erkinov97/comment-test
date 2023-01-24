@@ -15,8 +15,8 @@ const closeModal = (params) => {
   modal.value = params;
 };
 watch(commentId, (newVal) => {
-  console.log(newVal);
-  store.fetchComment({ id: commentId.value });
+  // console.log(newVal);
+  store.fetchComment({ id: newVal });
 });
 
 const modal = ref(false);

@@ -2,8 +2,9 @@
 import { defineProps, defineEmits } from "vue";
 defineProps({
   data: {
-    type: Object,
+    type: [Object, Array, String],
     default: () => ({
+      id: "Props Id",
       postId: "Props postId",
       name: "Props Name",
       email: "Props Name",
@@ -21,6 +22,10 @@ function closeModal() {
     <div class="modal-content" @click.stop role="dialog">
       <div>
         <button @click="closeModal" class="close-modal">&times;</button>
+      </div>
+      <div class="content">
+        <strong>Comment Id</strong>
+        <p>{{ data.id }}</p>
       </div>
       <div class="content">
         <strong>PostId</strong>
@@ -63,6 +68,11 @@ function closeModal() {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
+}
+@media (min-width: 320px) and (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+  }
 }
 .content {
   margin-top: 1rem;
