@@ -17,16 +17,3 @@ import { RouterLink } from "vue-router";
     </div>
   </header>
 </template>
-<style>
-header {
-  padding: 10px 1rem;
-  border: 1px solid #ccc;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-</style>

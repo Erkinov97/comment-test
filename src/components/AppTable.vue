@@ -14,6 +14,10 @@ const props = defineProps({
     default: false,
   },
 });
+const emit = defineEmits(["open-modal"]);
+function openModal(id) {
+  emit("open-modal", id);
+}
 </script>
 
 <template>
@@ -37,7 +41,7 @@ const props = defineProps({
         <td>{{ post.email }}</td>
         <td>{{ post.body }}</td>
         <td class="button">
-          <button class="modal-btn">Open</button>
+          <button class="modal-btn" @click="openModal(post.id)">Open</button>
         </td>
       </tr>
     </template>

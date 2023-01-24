@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useCommentStore = defineStore("comment", {
   state: () => ({
     comments: [],
+    comment: "",
     page: 0,
     total: 0,
     limit: 4,
@@ -29,6 +30,16 @@ export const useCommentStore = defineStore("comment", {
           this.comments = res.data;
           this.total = res.headers["x-total-count"];
           this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    async fetchComment({ id }) {
+      await axios
+        .get(`/comments/${id}`)
+        .then((res) => {
+          this.comment = res.data;
         })
         .catch((err) => {
           console.log(err);
