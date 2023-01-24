@@ -1,15 +1,13 @@
 <script setup>
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import { useCommentStore } from "../stores/comment";
 const store = useCommentStore();
 const data = reactive({
   limit: 10,
-  page: 1,
+  page: Number(localStorage.getItem("current_page")),
 });
-const totalPage = ref("");
 onMounted(async () => {
   await store.fetchComments(data);
-  totalPage.value = await store.getTotal;
   store.limit = data.limit;
   store.page = data.page;
 });
@@ -24,12 +22,13 @@ watch(
   () => data.page,
   (n) => {
     store.fetchComments(data);
+    localStorage.setItem("current_page", n);
     console.log(n, " value changed");
   }
 );
 </script>
 <template>
-  <ul class="page_wrapper">
+  <ul class="pagination">
     <li v-if="data.page !== 1">
       <button type="button" @click="data.page = data.page - 1">Prev</button>
     </li>
@@ -63,30 +62,3 @@ watch(
     </li>
   </ul>
 </template>
-<style>
-.page_wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  list-style: none;
-}
-button {
-  border-radius: 8px;
-  background-color: transparent;
-  margin-left: 5px;
-}
-button,
-.page {
-  border: 1px solid black;
-  padding: 10px;
-  cursor: pointer;
-}
-.current-page {
-  border: 2px solid teal;
-}
-button:hover {
-  box-shadow: 0 0 4px rgba(3, 3, 3, 0.8);
-  opacity: 0.9;
-}
-</style>

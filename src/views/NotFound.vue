@@ -7,13 +7,3 @@
     </div>
   </div>
 </template>
-<style>
-.notFound {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.notFound__inner {
-  text-align: center;
-}
-</style>

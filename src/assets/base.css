@@ -1,0 +1,94 @@
+/* TABLE */
+table.table {
+    width: 100%;
+}
+
+th,
+tr {
+    background-color: #ccc;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 0.25em;
+}
+
+.table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #fff;
+    transition: all 0.3s linear;
+}
+
+td.button {
+    text-align: right;
+    display: flex;
+}
+
+table button {
+    border-radius: 3px;
+    border: none;
+    margin: 0 0.25em;
+    transition: all 0.3s;
+}
+
+table button:hover {
+    box-shadow: 0 0 4px rgba(3, 3, 3, 0.8);
+    opacity: 0.9;
+}
+
+table button.modal-btn {
+    background: #6f9;
+}
+
+@media screen and (max-width: 800px) {
+    table {
+        overflow: hidden;
+        display: block;
+        overflow-x: scroll;
+    }
+
+    td,
+    th {
+        padding: 5px;
+    }
+
+    .pagination {
+        overflow-x: scroll;
+
+    }
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    list-style: none;
+}
+
+.pagination li button {
+    border-radius: 8px;
+    background-color: transparent;
+    margin-left: 5px;
+}
+
+button,
+.page {
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.current-page {
+    border: 2px solid teal;
+}
+
+.pagination button:hover {
+    box-shadow: 0 0 4px rgba(3, 3, 3, 0.8);
+    opacity: 0.9;
+}

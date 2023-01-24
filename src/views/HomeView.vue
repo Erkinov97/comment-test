@@ -11,4 +11,3 @@ const store = useCommentStore();
   </main>
   <Pagination />
 </template>
-
